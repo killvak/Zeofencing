@@ -51,7 +51,7 @@ apply the  ZeofencingProtocol
 /////////////////////
 AppDelegateClass , Local Notification Setup :
 
-//declare locationManager Constant
+//declare locationManager Constant in the AppDelegateClass
 
      let  locationManager = CLLocationManager()
 
@@ -67,7 +67,7 @@ AppDelegateClass , Local Notification Setup :
     }
     
     
- //declare this function 
+ //declare this function  in the AppDelegateClass
  
  
      func handleEvent(forRegion region: CLRegion!, state : String) {
@@ -84,8 +84,8 @@ AppDelegateClass , Local Notification Setup :
             UIApplication.shared.presentLocalNotificationNow(notification)
         }
           }
-    
-    * add this extension  :-
+
+add this extension to your project :-
     
     
     extension AppDelegate: CLLocationManagerDelegate {
