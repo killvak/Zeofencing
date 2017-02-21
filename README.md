@@ -72,12 +72,11 @@ AppDelegateClass , Local Notification Setup :
  
      func handleEvent(forRegion region: CLRegion!, state : String) {
         // Show an alert if application is active
+        guard let message = SetUpAnnotations.note(fromRegionIdentifier: region.identifier) else { return }
         if UIApplication.shared.applicationState == .active {
-            guard let message = SetUpAnnotations.note(fromRegionIdentifier: region.identifier) else { return }
             window?.rootViewController?.showAlert(withTitle: nil, message: state + message)
         } else {
             // Otherwise present a local notification
-            guard let message = SetUpAnnotations.note(fromRegionIdentifier: region.identifier) else { return }
             let notification = UILocalNotification()
             notification.alertBody = state + message
             notification.soundName = "Default"
