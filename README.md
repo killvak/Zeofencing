@@ -30,7 +30,8 @@ apply the  ZeofencingProtocol
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         return  setupAnnotation.mapView(mapView, viewFor: annotation)
     }
-        ///just insert the mapView func parameters to setupAnnotations.mapView func        
+        ///just insert the mapView func parameters to setupAnnotations.mapView func   & 
+        you have to set the circleStrokeColor and circleLineWidth , circlefillColor and it's alpha is an optional u can set it to nil if u don't want to use it 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         return setupAnnotation.mapView(mapView, rendererFor: overlay, circleStrokeColor: UIColor.purple, circleLineWidth: 1.0, fillColor: nil, fillColorWithAlphaComponent: nil)
     }
