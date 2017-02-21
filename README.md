@@ -1,23 +1,38 @@
 # Zeofencing
 First Thing setup user location and show it on Map after import the frameWork to your ViewController that :-
 
-    import Zeofencing 
+ set Annotations value ex :
+ 
+     let data2 = ["AppsSquare" : (30.794940197245495, 30.996800645431936), "My Cafe" : (37.703026, -121.759735), "My Cafe2" : (37.702976, -121.760731), "My Cafe3" : (37.702894, -121.761717), "My Cafe4" : (37.702799, -121.762568), "My Cafe5" : (37.702606, -121.763943)]
+     
+      class GetData  {    
+      func xyz(data : Dictionary<String,(Double,Double)>) -> [Annotations]{
+        var arr = [Annotations]()
+        for z in data {
+            let y = Annotations(coordinate: CLLocationCoordinate2D( latitude: z.value.0,  longitude: z.value.1), radius: 100, identifier: NSUUID().uuidString, note: z.key, eventType: EventType.onEntry   )
+            arr.append(y)
+        }
+        return arr
+     }
+   ok, Let's start 
+     
+        import Zeofencing 
 apply the  ZeofencingProtocol 
   ex : 
       
       class ViewController: UIViewController , MKMapViewDelegate , CLLocationManagerDelegate , ZeofencingProtocol { }
         
-  - define an array of Geotification which is the Map Annotations and declare SetupAnnotationClass 
+  - define an array of Annotations and declare SetupAnnotationClass 
       ex :    
       
-        var geotifications : [Geotification] = []
+        var geotifications : [Annotations] = []
         let setupAnnotation = SetUpAnnotations()
         
   - P.S : don't forget to make the map follow and track the user location:
   
                 mapView.userTrackingMode = MKUserTrackingMode.follow
                 
-  -    To set new Annotations to the map use the below function it take the  annotations array (geotifications) and the mapView and the locationManager. 
+  -    To set new Annotations to the map use the below function it take the  annotations array , the mapView and the locationManager. 
   ex : 
   
         setupAnnotation.setupAnnotationDataOnMap( anotationsArray: geotifications, mapView: mapView ,locationManager : locationManager)
